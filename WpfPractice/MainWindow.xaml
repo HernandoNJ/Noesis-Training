@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280">
 
-    <!--xmlns:local="clr-namespace:WpfPractice"
-        xmlns:local = "clr-namespace:WPFDependencyProperty"-->
     <DockPanel>
 
         <Border DockPanel.Dock="Top" Background="CornflowerBlue">
@@ -32,42 +30,116 @@
             <!--Create a nested Grid in Row 1-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"/>
-                    <!--Left arrow button-->
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="50"/>
-                    <!--Right arrow button-->
                 </Grid.ColumnDefinitions>
 
-                <Button Content="LeftBtn" Height="70" Margin="5" Grid.Column="0"
-                        Click="LeftButton_Click"/> <!--Left button, Row 1-->
+                <Image Name="Image0" Margin="20" MouseLeftButtonDown="Image0_MouseLeftButtonDown"
+                       Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
+                
+                
+                <!--<Button Name="Button1" Width="170" Height="100" Margin="10" Grid.Column="0" Click="ButtonClick">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
+                </Button>-->
 
-                <Button Name="Button1" Width="170" Height="100" Margin="10" Grid.Column="1"
-                        Click="Button1_Click" MouseEnter="Button1_MouseEnter">
+
+                <!--<Button FontSize="16" FontWeight="Bold">Click the Background
+                    <Button.Template>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="Blue"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>-->
+
+                <!--<Button Name="Button1" Width="170" Height="100" Grid.Column="0" Click="ButtonClick"/>
+                <Image Name="Image1" Width="170" Height="100" MouseDown=""
+                       Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
+
+                
+                
+                
+                
+                
+                <Button Name="Button2" Width="170" Height="100" Margin="10" Grid.Column="1" Click="ButtonClick">
                     <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
                 </Button>
-                <Button Name="Button2" Width="170" Height="100" Margin="10" Grid.Column="2">
-                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
-                </Button>
-                <Button Name="Button3" Width="170" Height="100" Margin="10" Grid.Column="3">
+                
+                
+                
+                
+                
+                <Button Name="Button3" Width="170" Height="100" Margin="10" Grid.Column="2" Click="ButtonClick">
                     <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
                 </Button>
-                <Button Name="Button4" Width="170" Height="100" Margin="10" Grid.Column="4">
+                <Button Name="Button4" Width="170" Height="100" Margin="10" Grid.Column="3" Click="ButtonClick">
                     <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
                 </Button>
-                <Button Name="Button5" Width="170" Height="100" Margin="10" Grid.Column="5">
+                <Button Name="Button5" Width="170" Height="100" Margin="10" Grid.Column="4" Click="ButtonClick">
                     <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
-                </Button>
-                <Button Content="RightBtn" Height="70" Margin="5" Grid.Column="6"/> <!--Right button, Row 1-->                         
+                </Button>-->
 
             </Grid>
 
         </Grid>
     </DockPanel>
-
-
 </Window>
+
+<!--xmlns:local="clr-namespace:WpfPractice"
+        xmlns:local = "clr-namespace:WPFDependencyProperty"-->
+
+<!--<Page.Resources>
+    <ImageBrush x:Key="troubleshooting_normal" ImageSource="/Images/troubleshooting_yellow.png" />
+    <ImageBrush x:Key="troubleshooting_hover" ImageSource="/Images/troubleshooting_gray.png" />
+
+    <ControlTemplate TargetType="Button" x:Key="buttonTroubleshooting">
+        <Grid Name="button" Background="{StaticResource troubleshooting_normal}">
+            <ContentPresenter/>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="button" Property="Background" Value="{StaticResource troubleshooting_hover}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+</Page.Resources>
+
+<Button Name="ButtonTroubleShooting" Template="{StaticResource buttonTroubleshooting}" 
+        HorizontalAlignment="Left" Margin="287,109,0,0" VerticalAlignment="Top" Width="155" Height="155" 
+        Click="ButtonTroubleShooting_Click"/>-->
+
+<!--<Button FontSize="16" FontWeight="Bold">Click the Background
+    <Button.Template>
+        <ControlTemplate TargetType="{x:Type Button}">
+            <Border Background="{TemplateBinding Background}">
+                <ContentPresenter/>
+            </Border>
+        </ControlTemplate>
+    </Button.Template>
+
+    <Button.Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Blue"/>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Button.Style>
+</Button>-->

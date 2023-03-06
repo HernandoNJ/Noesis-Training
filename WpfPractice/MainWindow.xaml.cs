@@ -30,9 +30,18 @@ namespace WpfPractice
         public static readonly DependencyProperty isPictureHoveredProperty =
             DependencyProperty.Register("IsPictureHovered", typeof(bool), typeof(MainWindow)); // typeof(MainWindow): who is the owner, where the property has been declared
 
+
+        public Image mainImage;
+        public Image image0;
+        public Image image1;
+
+
         public MainWindow()
         {
             InitializeComponent();
+            mainImage = (Image)FindName("Main_image");
+            image1 = (Image)FindName("Image1");
+            image0 = (Image)FindName("Image0");
         }
 
         private static void OnPictureHovered(
@@ -48,55 +57,30 @@ namespace WpfPractice
             Console.WriteLine("Picture Hovered: " + dp.NewValue);
         }
 
-        //private static void OnPictureHovered(
-        //    DependencyObject dObj,
-        //    DependencyPropertyChangedEventArgs dp)
-        //{
-        //    MainWindow mainWindow1 = dObj as MainWindow;
-        //    mainWindow1.OnPictureHovered(dp);
-        //}
-
-        //private void OnPictureHovered(DependencyPropertyChangedEventArgs dp)
-        //{
-        //    Console.WriteLine("Picture Hovered: " + dp.NewValue);
-        //}
-
-        private void OnClick5(object sender, RoutedEventArgs e)
-        {
-            //btn6.FontSize = 25;
-            //btn6.Content = "This is my favorite photo.";
-            //btn6.Background = Brushes.IndianRed;
-        }
-
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            //Button btn = (Button)sender;
-            //Image img = (Image)btn.FindResource("Image");
-            //var a = sender;
+            Button currentButton = (Button)sender;
+            Console.WriteLine("button name: " + currentButton.Name);
 
-            //var newImageSourcePath = @"C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg";
-            //Image img = (Image)sender; // Invalid cast
-            Main_image.Stretch = Stretch.UniformToFill;
-            //Main_image.Source = (ImageSource)new ImageSourceConverter().ConvertFrom(newImageSourcePath);
-            // Image1.Source = (ImageSource)new ImageSourceConverter().ConvertFrom("Image2.gif");
+
+
+            // if(btn1) img1 source
+            var newSource = image1.Source;
+            mainImage.Source = newSource; 
         }
 
-        private void Button1_MouseEnter(object sender, MouseEventArgs e)
+        public string GetSource(string btnName)
         {
-            Console.WriteLine("Mouse enter called");
+            var newSource = (Button)FindName(btnName);
+            return null;
+
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void Image0_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Button 1 clicked");
+            Console.WriteLine("Image 0 clicked");
+            mainImage.Source = image0.Source;
 
-            Uri newImageUri = new Uri(@"C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg");
-            Main_image.Source = new BitmapImage(newImageUri);
-        }
-
-        private void LeftButton_Click(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Left button clicked");
         }
     }
 }
