@@ -1,0 +1,73 @@
+﻿<Window x:Class="WpfPractice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPractice"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280">
+
+    <!--xmlns:local="clr-namespace:WpfPractice"
+        xmlns:local = "clr-namespace:WPFDependencyProperty"-->
+    <DockPanel>
+
+        <Border DockPanel.Dock="Top" Background="CornflowerBlue">
+            <TextBlock Foreground="White" HorizontalAlignment="Stretch" FontSize="20">Images previewer</TextBlock>
+        </Border>
+
+        <Grid Name="UpperGrid" Width="1200" 
+              VerticalAlignment="Center" HorizontalAlignment="Center" 
+              Margin="10" ShowGridLines="True">
+
+            <!--Divide the Upper Grid into 2 rows-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+
+            <!--Image, Upper Grid Row 0-->
+            <Image Name="Main_image" Width="500" Height="300" Grid.Row="0" HorizontalAlignment="Center"
+                   Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
+
+            <!--Create a nested Grid in Row 1-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <!--Left arrow button-->
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                    <!--Right arrow button-->
+                </Grid.ColumnDefinitions>
+
+                <Button Content="LeftBtn" Height="70" Margin="5" Grid.Column="0"
+                        Click="LeftButton_Click"/> <!--Left button, Row 1-->
+
+                <Button Name="Button1" Width="170" Height="100" Margin="10" Grid.Column="1"
+                        Click="Button1_Click" MouseEnter="Button1_MouseEnter">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
+                </Button>
+                <Button Name="Button2" Width="170" Height="100" Margin="10" Grid.Column="2">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\pexels-ian-turnell-709552.jpg"/>
+                </Button>
+                <Button Name="Button3" Width="170" Height="100" Margin="10" Grid.Column="3">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
+                </Button>
+                <Button Name="Button4" Width="170" Height="100" Margin="10" Grid.Column="4">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
+                </Button>
+                <Button Name="Button5" Width="170" Height="100" Margin="10" Grid.Column="5">
+                    <Image Source="C:\Users\HernandoNJ\Pictures\Landscapes\Lago-Moraine.jpg"/>
+                </Button>
+                <Button Content="RightBtn" Height="70" Margin="5" Grid.Column="6"/> <!--Right button, Row 1-->                         
+
+            </Grid>
+
+        </Grid>
+    </DockPanel>
+
+
+</Window>
