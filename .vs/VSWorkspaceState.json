@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\WpfPractice"
+    "\\WpfPractice",
+    "\\WpfPractice\\Images",
+    "\\WpfPractice\\MySamples"
   ],
-  "SelectedNode": "\\WpfPractice\\MainWindow.xaml",
+  "SelectedNode": "\\WpfPractice\\Images\\bri.jpg",
   "PreviewInSolutionExplorer": false
 }

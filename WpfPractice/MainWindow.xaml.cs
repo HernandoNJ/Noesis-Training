@@ -18,69 +18,40 @@ namespace WpfPractice
     /// <summary> Interaction logic for MainWindow.xaml </summary>
     public partial class MainWindow : Window
     {
-        // Property declaration
-        public bool IsPictureHovered
-        {
-            // Bind this property to the dependency
-            get => (bool)GetValue(isPictureHoveredProperty);
-            set => SetValue(isPictureHoveredProperty, value);
-        }
-
-        // Dependency declaration
-        public static readonly DependencyProperty isPictureHoveredProperty =
-            DependencyProperty.Register("IsPictureHovered", typeof(bool), typeof(MainWindow)); // typeof(MainWindow): who is the owner, where the property has been declared
-
-
         public Image mainImage;
         public Image image0;
         public Image image1;
-
+        public Image image2;
+        public Image image3;
+        public Image image4;
 
         public MainWindow()
         {
             InitializeComponent();
+            GetImageReferences();
+        }
+
+        private void GetImageReferences()
+        {
             mainImage = (Image)FindName("Main_image");
-            image1 = (Image)FindName("Image1");
             image0 = (Image)FindName("Image0");
+            image1 = (Image)FindName("Image1");
+            image2 = (Image)FindName("Image2");
+            image3 = (Image)FindName("Image3");
+            image4 = (Image)FindName("Image4");
+
+            Console.WriteLine("Image 0: " + image0.Name);
+            Console.WriteLine("Image 1: " + image1.Name);
         }
 
-        private static void OnPictureHovered(
-            DependencyObject dObj,
-            DependencyPropertyChangedEventArgs dp)
+        private void ImageClicked(object sender, MouseButtonEventArgs e)
         {
-            MainWindow mainWindow1 = dObj as MainWindow;
-            mainWindow1.OnPictureHovered(dp);
-        }
+            var imageSender = (Image)sender;
+            var imageName = imageSender.Name;
 
-        private void OnPictureHovered(DependencyPropertyChangedEventArgs dp)
-        {
-            Console.WriteLine("Picture Hovered: " + dp.NewValue);
-        }
-
-        private void ButtonClick(object sender, RoutedEventArgs e)
-        {
-            Button currentButton = (Button)sender;
-            Console.WriteLine("button name: " + currentButton.Name);
-
-
-
-            // if(btn1) img1 source
-            var newSource = image1.Source;
-            mainImage.Source = newSource; 
-        }
-
-        public string GetSource(string btnName)
-        {
-            var newSource = (Button)FindName(btnName);
-            return null;
-
-        }
-
-        private void Image0_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Console.WriteLine("Image 0 clicked");
-            mainImage.Source = image0.Source;
-
+            Console.WriteLine("Image sender: " + imageName); 
+            if (imageName == "Image0") mainImage.Source = image0.Source;
+            else if (imageName == "Image1") mainImage.Source = image1.Source;
         }
     }
 }
