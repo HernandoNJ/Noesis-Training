@@ -30,20 +30,46 @@
             <!--Create a nested Grid in Row 1-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Name="Image0" Margin="20" Grid.Column="0"
+                <Button Name="LeftButton" Grid.Column="0" Width="50" Height="100" Background="Transparent" BorderBrush="Transparent" Click="LeftButton_Click">
+                    <StackPanel>
+                        <Image Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\LeftBtnIcon.png" />
+                    </StackPanel>
+                </Button>
+
+                <Image Name="Image0" Margin="20" Grid.Column="1"
                        MouseLeftButtonDown="ImageClicked"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\moraine.jpg"/>
 
-                <Image Name="Image1" Margin="20" Grid.Column="1"
+                <Image Name="Image1" Margin="20" Grid.Column="2"
                        MouseLeftButtonDown="ImageClicked"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\ian.jpg"/>
+
+                <Image Name="Image2" Margin="20" Grid.Column="3"
+                       MouseLeftButtonDown="ImageClicked"
+                       Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\bri.jpg"/>
+
+                <Image Name="Image3" Margin="20" Grid.Column="4"
+                       MouseLeftButtonDown="ImageClicked"
+                       Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\green.jpg"/>
+
+                <Image Name="Image4" Margin="20" Grid.Column="5"
+                       MouseLeftButtonDown="ImageClicked"
+                       Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\james.jpg"/>
+
+                <Button Name="RightButton" Grid.Column="6" Width="50" Height="100" Background="Transparent" BorderBrush="Transparent" Click="RightButton_Click">
+                    <StackPanel>
+                        <Image Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\RightBtnIcon.png" />
+                    </StackPanel>
+                </Button>
 
             </Grid>
         </Grid>

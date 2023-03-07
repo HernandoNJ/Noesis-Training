@@ -52,6 +52,19 @@ namespace WpfPractice
             Console.WriteLine("Image sender: " + imageName); 
             if (imageName == "Image0") mainImage.Source = image0.Source;
             else if (imageName == "Image1") mainImage.Source = image1.Source;
+            else if (imageName == "Image2") mainImage.Source = image2.Source;
+            else if (imageName == "Image3") mainImage.Source = image3.Source;
+            else if (imageName == "Image4") mainImage.Source = image4.Source;
+        }
+
+        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RightButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
