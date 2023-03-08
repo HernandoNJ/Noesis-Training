@@ -18,182 +18,244 @@ namespace WpfPractice
     /// <summary> Interaction logic for MainWindow.xaml </summary>
     public partial class MainWindow : Window
     {
-        private List<Image> imagesList = new List<Image>();
-        private List<ImageSource> imagesSourceList = new List<ImageSource>();
-        private Dictionary<string, ImageSource> imagesDictionary = new Dictionary<string, ImageSource>();
-
         private Image mainImage;
 
-        private Image imageA;
-        private Image imageB;
-        private Image imageC;
-        private Image imageD;
-        private Image imageE;
+        private Image image1;
+        private Image image2;
+        private Image image3;
+        private Image image4;
+        private Image image5;
+
+        private int imgIndex;
+        private int imgCount;
+        private int centralIndex = 2;
+
+        private List<Image> imagesList = new List<Image>();
+        private List<ImageSource> imagesSourcesList = new List<ImageSource>();
+        private List<ImageSource> tempSources = new List<ImageSource>();
 
         public MainWindow()
         {
             InitializeComponent();
-            FindImageNames();
-            AddImagesToList();
-            AssignInitialSources();
-            ResetImagesSources();
-            AssignSourcesToDictionary();
-            SetMainImage(imageC);
+            SetImages();
+            SetStartingMainImage(image3);
         }
-        private void FindImageNames()
+
+        private void SetImages()
         {
             mainImage = (Image)FindName("Main_image");
+            image1 = (Image)FindName("Image1");
+            image2 = (Image)FindName("Image2");
+            image3 = (Image)FindName("Image3");
+            image4 = (Image)FindName("Image4");
+            image5 = (Image)FindName("Image5");
 
-            imageA = (Image)FindName("ImageA");//moraine sm
-            imageB = (Image)FindName("ImageB");//ian gf
-            imageC = (Image)FindName("ImageC");//bri dl
-            imageD = (Image)FindName("ImageD");//green gm
-            imageE = (Image)FindName("ImageE");//james ls
+            imagesList.Add(image1);
+            imagesList.Add(image2);
+            imagesList.Add(image3);
+            imagesList.Add(image4);
+            imagesList.Add(image5);
+
+            imagesSourcesList.Add(image1.Source);
+            imagesSourcesList.Add(image2.Source);
+            imagesSourcesList.Add(image3.Source);
+            imagesSourcesList.Add(image4.Source);
+            imagesSourcesList.Add(image5.Source);
+
+            tempSources.Add(image1.Source);
+            tempSources.Add(image2.Source);
+            tempSources.Add(image3.Source);
+            tempSources.Add(image4.Source);
+            tempSources.Add(image5.Source);
         }
 
-        private void AddImagesToList()
-        {
-            imagesList.Add(imageA);
-            imagesList.Add(imageB);
-            imagesList.Add(imageC);
-            imagesList.Add(imageD);
-            imagesList.Add(imageE);
-        }
+        private void SetStartingMainImage(Image img) => mainImage.Source = img.Source;
 
-        private void AssignInitialSources()
-        {
-            imagesSourceList.Add(imageA.Source);
-            imagesSourceList.Add(imageB.Source);
-            imagesSourceList.Add(imageC.Source);
-            imagesSourceList.Add(imageD.Source);
-            imagesSourceList.Add(imageE.Source);
-        }
-
-        private void ResetImagesSources()
-        {
-            imageA.Source = imagesSourceList[0];
-            imageB.Source = imagesSourceList[1];
-            imageC.Source = imagesSourceList[2];
-            imageD.Source = imagesSourceList[3];
-            imageE.Source = imagesSourceList[4];
-        }
-
-        private void AssignSourcesToDictionary()
-        {
-            imagesDictionary.Add("ImageA", ImageA.Source);
-            imagesDictionary.Add("ImageB", ImageB.Source);
-            imagesDictionary.Add("ImageC", ImageC.Source);
-            imagesDictionary.Add("ImageD", ImageD.Source);
-            imagesDictionary.Add("ImageE", ImageE.Source);
-        }
-
-        private void SetMainImage(Image img) => mainImage.Source = img.Source;
-
-        private void ImageA_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SetMainImage(object sender)
         {
             Image img = (Image)sender;
-            SetMainImage(img);
-
-            //ResetImagesSources();
-            ImageA.Source = imagesSourceList[3];//D
-            ImageB.Source = imagesSourceList[4];//E
-            ImageC.Source = imagesSourceList[0];//A
-            ImageD.Source = imagesSourceList[1];//B
-            ImageE.Source = imagesSourceList[2];//C
-
-            imagesSourceList[0] = imagesSourceList[3];//D
-            imagesSourceList[1] = imagesSourceList[4];//E
-            imagesSourceList[2] = imagesSourceList[0];//A
-            imagesSourceList[3] = imagesSourceList[1];//B
-            imagesSourceList[4] = imagesSourceList[2];//C
-
-        }
-        private void ImageB_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Image img = (Image)sender;
-            SetMainImage(img);
-
-            //ResetImagesSources();
-
-            ImageA.Source = imagesSourceList[4];//E
-            ImageB.Source = imagesSourceList[0];//A
-            ImageC.Source = imagesSourceList[1];//B
-            ImageD.Source = imagesSourceList[2];//C
-            ImageE.Source = imagesSourceList[3];//D
-
-            imagesSourceList[0] = imagesSourceList[4];//E
-            imagesSourceList[1] = imagesSourceList[0];//A
-            imagesSourceList[2] = imagesSourceList[1];//B
-            imagesSourceList[3] = imagesSourceList[2];//C
-            imagesSourceList[4] = imagesSourceList[3];//D
+            mainImage.Source = img.Source;
         }
 
-        private void ImageC_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void SetCarrouselImages(int senderIndex)
         {
-            Image img = (Image)sender;
-            SetMainImage(img);
+            if (senderIndex == 0)
+            {
+                //0
+                imagesList[0].Source = imagesSourcesList[senderIndex + 3];//3
+                tempSources[0] = imagesSourcesList[senderIndex + 3];
 
-            //ResetImagesSources();
-            //ImageA.Source = imagesDictionary["ImageA"];
-            //ImageB.Source = imagesDictionary["ImageB"];
-            //ImageC.Source = imagesDictionary["ImageC"];
-            //ImageD.Source = imagesDictionary["ImageD"];
-            //ImageE.Source = imagesDictionary["ImageE"];
+                imagesList[1].Source = imagesSourcesList[senderIndex + 4];//4
+                tempSources[1] = imagesSourcesList[senderIndex + 4];
+
+                imagesList[2].Source = imagesSourcesList[senderIndex];//0
+                tempSources[2] = imagesSourcesList[senderIndex];
+
+                imagesList[3].Source = imagesSourcesList[senderIndex + 1];//1
+                tempSources[3] = imagesSourcesList[senderIndex + 1];
+
+                imagesList[4].Source = imagesSourcesList[senderIndex + 2];//2
+                tempSources[4] = imagesSourcesList[senderIndex + 2];
+            }
+            else if (senderIndex == 1)
+            {
+                //1
+                imagesList[0].Source = imagesSourcesList[senderIndex + 3];//4
+                tempSources[0] = imagesSourcesList[senderIndex + 3];
+
+                imagesList[1].Source = imagesSourcesList[senderIndex - 1];//0
+                tempSources[1] = imagesSourcesList[senderIndex - 1];
+
+                imagesList[2].Source = imagesSourcesList[senderIndex];//1
+                tempSources[2] = imagesSourcesList[senderIndex];
+
+                imagesList[3].Source = imagesSourcesList[senderIndex + 1];//2
+                tempSources[3] = imagesSourcesList[senderIndex + 1];
+
+                imagesList[4].Source = imagesSourcesList[senderIndex + 2];//3
+                tempSources[4] = imagesSourcesList[senderIndex + 2];
+            }
+            else if (senderIndex == 2)
+            {
+                //2
+                imagesList[0].Source = imagesSourcesList[senderIndex - 2];//0
+                tempSources[0] = imagesSourcesList[senderIndex - 2];
+
+                imagesList[1].Source = imagesSourcesList[senderIndex - 1];//1
+                tempSources[1] = imagesSourcesList[senderIndex - 1];
+
+                imagesList[2].Source = imagesSourcesList[senderIndex];//2
+                tempSources[2] = imagesSourcesList[senderIndex];
+
+                imagesList[3].Source = imagesSourcesList[senderIndex + 1];//3
+                tempSources[3] = imagesSourcesList[senderIndex + 1];
+
+                imagesList[4].Source = imagesSourcesList[senderIndex + 2];//4
+                tempSources[4] = imagesSourcesList[senderIndex + 2];
+            }
+            else if (senderIndex == 3)
+            {
+                //3
+                imagesList[0].Source = imagesSourcesList[senderIndex - 2];//1
+                tempSources[0] = imagesSourcesList[senderIndex - 2];
+
+                imagesList[1].Source = imagesSourcesList[senderIndex - 1];//2
+                tempSources[1] = imagesSourcesList[senderIndex - 1];
+
+                imagesList[2].Source = imagesSourcesList[senderIndex];//3
+                tempSources[2] = imagesSourcesList[senderIndex];
+
+                imagesList[3].Source = imagesSourcesList[senderIndex + 1];//4
+                tempSources[3] = imagesSourcesList[senderIndex + 1];
+
+                imagesList[4].Source = imagesSourcesList[senderIndex - 3];//0
+                tempSources[4] = imagesSourcesList[senderIndex - 3];
+            }
+            else if (senderIndex == 4)
+            {
+                //4
+                imagesList[0].Source = imagesSourcesList[senderIndex - 2];//2
+                tempSources[0] = imagesSourcesList[senderIndex - 2];
+
+                imagesList[1].Source = imagesSourcesList[senderIndex - 1];//3
+                tempSources[1] = imagesSourcesList[senderIndex - 1];
+
+                imagesList[2].Source = imagesSourcesList[senderIndex];//4
+                tempSources[2] = imagesSourcesList[senderIndex];
+
+                imagesList[3].Source = imagesSourcesList[senderIndex - 4];//0
+                tempSources[3] = imagesSourcesList[senderIndex - 4];
+
+                imagesList[4].Source = imagesSourcesList[senderIndex - 3];//1
+                tempSources[4] = imagesSourcesList[senderIndex - 3];
+            }
+
+            SetMainImage(imagesList[2]);
+
+            for (int i = 0; i < imagesSourcesList.Count; i++)
+            {
+                imagesSourcesList[i] = tempSources[i];
+            }
         }
 
-        private void ImageD_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Image1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Image img = (Image)sender;
-            SetMainImage(img);
+            Image imageSent = (Image)sender;
+            int senderIndex = imagesList.IndexOf(imageSent);
 
-            //ResetImagesSources();
+            // Reset temp images list
+            for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
 
-            //ImageA.Source = imagesList[1].Source;
-            //ImageB.Source = imagesList[2].Source;
-            //ImageC.Source = imagesList[3].Source;
-            //ImageD.Source = imagesList[4].Source;
-            //ImageE.Source = imagesList[0].Source;
+            SetCarrouselImages(senderIndex);
         }
 
-        private void ImageE_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Image2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Image img = (Image)sender;
-            SetMainImage(img);
+            Image imageSent = (Image)sender;
+            int senderIndex = imagesList.IndexOf(imageSent);
 
-            //ResetImagesSources();
+            // Reset temp images list
+            for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
 
-            //ImageA.Source = imagesList[2].Source;
-            //ImageB.Source = imagesList[3].Source;
-            //ImageC.Source = imagesList[4].Source;
-            //ImageD.Source = imagesList[0].Source;
-            //ImageE.Source = imagesList[1].Source;
+            SetCarrouselImages(senderIndex);
+
+
+        }
+
+
+
+        private void Image3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Image imageSent = (Image)sender;
+            int senderIndex = imagesList.IndexOf(imageSent);
+
+            // Reset temp images list
+            for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
+
+            SetCarrouselImages(senderIndex);
+
+
+        }
+
+        private void Image4_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Image imageSent = (Image)sender;
+            int senderIndex = imagesList.IndexOf(imageSent);
+
+            // Reset temp images list
+            for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
+
+            SetCarrouselImages(senderIndex);
+
+
+        }
+
+        private void Image5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Image imageSent = (Image)sender;
+            int senderIndex = imagesList.IndexOf(imageSent);
+
+            // Reset temp images list
+            for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
+
+            SetCarrouselImages(senderIndex);
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // Go back
+            // imgIndex --;
+            // if(i<1) i = 6;
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // imgIndex ++;
+            // if(i>1) i = 1;
         }
     }
 }
 
-/*    0 A sm
-    * 1 B gf
-    * 2 C cl
-    * 3 D gv
-    * 4 E ls
-    * 
-    * 0 D gv
-    * 1 E
-    * 2 A
-    * 3 B
-    * 4 C
-    * 
-    */
 
 //List<Foo> list = new List<Foo> { 1, 2, 3 };
 //var query = list.Select((val, index) => list[index].val += 6);
