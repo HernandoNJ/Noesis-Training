@@ -26,10 +26,6 @@ namespace WpfPractice
         private Image image4;
         private Image image5;
 
-        private int imgIndex;
-        private int imgCount;
-        private int centralIndex = 2;
-
         private List<Image> imagesList = new List<Image>();
         private List<ImageSource> imagesSourcesList = new List<ImageSource>();
         private List<ImageSource> tempSources = new List<ImageSource>();
@@ -38,7 +34,7 @@ namespace WpfPractice
         {
             InitializeComponent();
             SetImages();
-            SetStartingMainImage(image3);
+            SetMainImage(image3);
         }
 
         private void SetImages()
@@ -69,7 +65,7 @@ namespace WpfPractice
             tempSources.Add(image5.Source);
         }
 
-        private void SetStartingMainImage(Image img) => mainImage.Source = img.Source;
+        private void SetMainImage(Image img) => mainImage.Source = img.Source;
 
         private void SetMainImage(object sender)
         {
@@ -170,7 +166,7 @@ namespace WpfPractice
                 tempSources[4] = imagesSourcesList[senderIndex - 3];
             }
 
-            SetMainImage(imagesList[2]);
+            SetMainImage((object)imagesList[2]);
 
             for (int i = 0; i < imagesSourcesList.Count; i++)
             {
@@ -226,8 +222,6 @@ namespace WpfPractice
             for (int i = 0; i < tempSources.Count; i++) tempSources[i] = null;
 
             SetCarrouselImages(senderIndex);
-
-
         }
 
         private void Image5_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -243,30 +237,50 @@ namespace WpfPractice
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
-            // Go back
-            // imgIndex --;
-            // if(i<1) i = 6;
+            for (int i = 0; i < imagesList.Count; i++)
+            {
+                if (i == 4)
+                {
+                    imagesList[i].Source = imagesSourcesList[0];
+                    tempSources[i] = imagesSourcesList[0];
+                }
+                else
+                {
+                    imagesList[i].Source = imagesSourcesList[i + 1];
+                    tempSources[i] = imagesSourcesList[i + 1];
+                }
+            }
+
+            for (int i = 0; i < imagesSourcesList.Count; i++)
+            {
+                imagesSourcesList[i] = tempSources[i];
+            }
+
+            SetMainImage(imagesList[2]);
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
-            // imgIndex ++;
-            // if(i>1) i = 1;
+            for (int i = imagesList.Count-1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    imagesList[i].Source = imagesSourcesList[4];
+                    tempSources[i] = imagesSourcesList[4];
+                }
+                else
+                {
+                    imagesList[i].Source = imagesSourcesList[i - 1];
+                    tempSources[i] = imagesSourcesList[i - 1];
+                }
+            }
+
+            for (int i = 0; i < imagesSourcesList.Count; i++)
+            {
+                imagesSourcesList[i] = tempSources[i];
+            }
+
+            SetMainImage(imagesList[2]);
         }
     }
 }
-
-
-//List<Foo> list = new List<Foo> { 1, 2, 3 };
-//var query = list.Select((val, index) => list[index].val += 6);
-//Console.WriteLine(string.Join(",", query));
-
-//indexesDifference = Math.Abs(centralIndex - selectedImageIndex);
-//imagesDictionary.Remove(centralIndex);
-//imagesDictionary.Add(centralIndex, image0);
-//imageSender.Source = imagesDictionary.Values.ToList().IndexOf()
-
-//fooDictionary.Values.ToList().IndexOf(someValue);
-//Values.ToList() converts your dictionary values into a List of someValue objects.
-//IndexOf(someValue) searches your new List looking for the someValue object in question and returns the Index which would match the index of the Key / Value pair in the dictionary.
-//This method does not care about the dictionary keys, it simply returns the index of the value that you are looking for
