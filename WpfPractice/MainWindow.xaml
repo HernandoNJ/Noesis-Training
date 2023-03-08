@@ -45,25 +45,25 @@
                     </StackPanel>
                 </Button>
 
-                <Image Name="Image0" Margin="20" Grid.Column="1"
-                       MouseLeftButtonDown="ImageClicked"
+                <Image Name="ImageA" Margin="20" Grid.Column="1"
+                       MouseLeftButtonDown="ImageA_MouseLeftButtonDown"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\moraine.jpg"/>
 
-                <Image Name="Image1" Margin="20" Grid.Column="2"
-                       MouseLeftButtonDown="ImageClicked"
+                <Image Name="ImageB" Margin="20" Grid.Column="2"
+                       MouseLeftButtonDown="ImageB_MouseLeftButtonDown"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\ian.jpg"/>
 
-                <Image Name="Image2" Margin="20" Grid.Column="3"
-                       MouseLeftButtonDown="ImageClicked"
+                <Image Name="ImageC" Margin="20" Grid.Column="3"
+                       MouseLeftButtonDown="ImageC_MouseLeftButtonDown"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\bri.jpg"/>
 
-                <Image Name="Image3" Margin="20" Grid.Column="4"
-                       MouseLeftButtonDown="ImageClicked"
+                <Image Name="ImageD" Margin="20" Grid.Column="4"
+                       MouseLeftButtonDown="ImageD_MouseLeftButtonDown"
                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\green.jpg"/>
 
-                <Image Name="Image4" Margin="20" Grid.Column="5"
-                       MouseLeftButtonDown="ImageClicked"
-                       Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\james.jpg"/>
+                <Image Name="ImageE" Margin="20" Grid.Column="5"
+                       MouseLeftButtonDown="ImageE_MouseLeftButtonDown"
+                        Source="C:\Users\HernandoNJ\Documents\GitHub\Noesis-Training\WpfPractice\Images\james.jpg"/>
 
                 <Button Name="RightButton" Grid.Column="6" Width="50" Height="100" Background="Transparent" BorderBrush="Transparent" Click="RightButton_Click">
                     <StackPanel>

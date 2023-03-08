@@ -32,4 +32,24 @@ public class Class1
         Button currentButton = (Button)sender;
         Console.WriteLine("button name: " + currentButton.Name);
     }
+
+    //private void SortImagesList()
+    //{
+    //    var imagesKeys = imagesDictionary.Keys.ToList();
+
+    //    for (int i = 0; i < imagesKeys.Count; i++) // Pivot number
+    //    {
+    //        for (int j = 0; j < (imagesKeys.Count - i - 1); j++) // Number to compare with Pivot number
+    //        {
+    //            // If true, interchange items with an aux variable
+    //            if (imagesKeys[j] > imagesKeys[j + 1])
+    //            {
+    //                int aux = imagesKeys[j]; // Keep the Pivot number
+    //                imagesKeys[j] = imagesKeys[j + 1]; // assign the following number to imagesKeys[j]
+    //                imagesKeys[j + 1] = aux; // assign j (aux) to [j+1]
+
+    //            }
+    //        }
+    //    }
+    //}
 }
